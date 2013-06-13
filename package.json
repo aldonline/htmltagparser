@@ -3,10 +3,13 @@
   "version": "0.0.2",
   "description": "htmltagparser",
   "author": "Aldo Bucchi <aldo.bucchi@gmail.com>",
-  "main": "build/htmltagparser.js",
+  "main": "lib",
   "scripts": {
     "test": "make test",
-    "prepublish": "coffee -c -o build lib/htmltagparser.coffee"
+    "build": "coffee -c lib/",
+    "clean": "rm lib/*.js",
+    "prepublish": "npm run build",
+    "postpublish": "npm run clean"
   },
   "devDependencies": {
     "mocha": "~1.9.0",

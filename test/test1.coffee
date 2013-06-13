@@ -1,7 +1,7 @@
 chai = require 'chai'
 should = chai.should()
 
-parse = require '../lib/htmltagparser'
+parse = require '../lib'
 
 describe 'the parser', ->
   
