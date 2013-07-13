@@ -32,3 +32,6 @@ describe 'the parser', ->
 
   it 'should throw an error when tag is not recognized', ->
     ( -> parse 'supertag' ).should.throw()
+
+  it 'should accept uppercase tags', ->
+    parse('DIV').tag.should.equal 'div'
