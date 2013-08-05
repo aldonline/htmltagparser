@@ -5,12 +5,15 @@ syntax_parser   = require './syntax_parser'
 parse string into an object with "tag, id, classes"
 throws ParseError, UnknownTagError
 
+@str the string to parse
+@strict whether to check for valid HTML tags. Defaults to yes
+
 returns:
 @tag      the type/name of tag ( div, input, etc )
 @id       optional ID string ( '#my-form' --> 'my-form' ) ( null if no ID )
 @classes  array of strings containing classes ( empty if no classes )
 ###
-module.exports = main = ( str ) ->
+module.exports = main = ( str, strict = yes ) ->
 
   # 1. sanity
   unless typeof str is 'string'
@@ -26,7 +29,7 @@ module.exports = main = ( str ) ->
   { tag, id, classes } = t
   tag = tag.toLowerCase()
 
-  unless valid_html_tags tag
+  if strict and not valid_html_tags tag
     throw new UnknownTagError tag 
   
   { tag, id, classes }
