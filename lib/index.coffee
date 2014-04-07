@@ -13,7 +13,7 @@ returns:
 @id       optional ID string ( '#my-form' --> 'my-form' ) ( null if no ID )
 @classes  array of strings containing classes ( empty if no classes )
 ###
-module.exports = main = ( str, strict = yes ) ->
+module.exports = main = ( str, strict = yes, lowercase = yes ) ->
 
   # 1. sanity
   unless typeof str is 'string'
@@ -27,9 +27,10 @@ module.exports = main = ( str, strict = yes ) ->
 
   # 3. semantics
   { tag, id, classes } = t
-  tag = tag.toLowerCase()
+  if lowercase
+    tag = tag.toLowerCase()
 
-  if strict and not valid_html_tags tag
+  if strict and not valid_html_tags tag.toLowerCase()
     throw new UnknownTagError tag 
   
   { tag, id, classes }

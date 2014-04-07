@@ -41,3 +41,6 @@ describe 'the parser', ->
 
   it 'should accept uppercase tags', ->
     parse('DIV').tag.should.equal 'div'
+
+  it 'should accept uppercase tags and return them as-is if lowercase=no', ->
+    parse('DIV', no, no).tag.should.equal 'DIV'
