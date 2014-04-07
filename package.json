@@ -1,6 +1,6 @@
 {
   "name": "htmltagparser",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "htmltagparser",
   "author": "Aldo Bucchi <aldo.bucchi@gmail.com>",
   "main": "lib/index.js",
